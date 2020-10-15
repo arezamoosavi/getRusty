@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: ./containers/rust/Dockerfile
+    ports:
+      - 8000:8000
+    command: ./target/release/seaside
+    # command: sleep 10000000
+
+  traefik:
+    build:
+      context: .
+      dockerfile: ./containers/traefik/Dockerfile
+    depends_on:
+      - web
+    ports:
+      - "5555:5555"
+      - "8888:8888"
