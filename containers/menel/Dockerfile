@@ -13,4 +13,4 @@ RUN cargo build --release
 RUN chmod a+rwx ./target/release/menel
 
 EXPOSE 8080
-# CMD ["./target/release/menel"]
+CMD ["./target/release/menel"]

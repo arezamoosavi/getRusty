@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: seaside-api
+  name: seaside-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: seaside-api
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: seaside-api
+    spec:
+      containers:
+        - image: 192.168.0.1:5000/seaside-api:v1
+          name: seaside-api
+          imagePullPolicy: "Always"
+          ports:
+            - containerPort: 8000
+          resources: {}
+status: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: seaside-api-svc
+
+spec:
+  selector:
+    app: seaside-api
+
+  ports:
+    - name: http
+      port: 8000
+      nodePort: 30080
+
+  type: NodePort

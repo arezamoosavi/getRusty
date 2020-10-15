@@ -13,4 +13,4 @@ RUN cargo build --release
 RUN chmod a+rwx ./target/release/seaside
 
 EXPOSE 8000
-# CMD ["./target/release/seaside"]
+CMD ["./target/release/seaside"]

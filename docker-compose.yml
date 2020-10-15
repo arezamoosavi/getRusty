@@ -7,8 +7,7 @@ services:
       dockerfile: ./containers/seaside/Dockerfile
     ports:
       - 8000:8000
-    command: ./target/release/seaside
-    # command: sleep 10000000
+    # command: ./target/release/seaside
 
   menel:
     build:
@@ -16,5 +15,4 @@ services:
       dockerfile: ./containers/menel/Dockerfile
     ports:
       - 8080:8080
-    command: ./target/release/menel
-    # command: sleep 10000000
+    # command: ./target/release/menel
